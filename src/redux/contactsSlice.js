@@ -1,34 +1,49 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  contacts: [],
-  filter: '',
-};
-
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState,
+  initialState: {
+    contacts: [],
+    filter: '',
+    error: null,
+    isLoading: false,
+  },
+  extraReducers: {},
   reducers: {
+    // HW-07
+    fetchContactsPending: state => {
+      state.isLoading = true;
+    },
+    fetchContactsFulfilled: (state, action) => {
+      state.isLoading = false;
+      state.contacts = action.payload;
+    },
+    fetchContactsRejected: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    // HW-06
     addContact: (state, action) => {
       state.contacts.push(action.payload);
     },
     removeFromArray: (state, action) => {
-      // state.contacts.filter(obj => obj.id !== action.payload);
       state.contacts = state.contacts.filter(obj => obj.id !== action.payload);
     },
     setFilter: (state, action) => {
       state.filter = action.payload;
       console.log(state.filter);
     },
-    // filteredContacts: (state, ) => {
-    //   state.contacts.filter(contact =>
-    //     contact.name.toLowerCase().includes(state.filter.toLowerCase())
-    //   );
-    // },
   },
 });
 
-export const { addContact, removeFromArray, setFilter, filteredContacts } =
-  contactsSlice.actions;
+export const {
+  fetchContactsPending,
+  fetchContactsFulfilled,
+  fetchContactsRejected,
+  addContact,
+  removeFromArray,
+  setFilter,
+  filteredContacts,
+} = contactsSlice.actions;
 
 export default contactsSlice.reducer;
