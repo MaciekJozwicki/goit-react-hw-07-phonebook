@@ -1,7 +1,8 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+// import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/operations';
 
 const ContactForm = ({ newContact }) => {
   const dispatch = useDispatch();
@@ -18,7 +19,6 @@ const ContactForm = ({ newContact }) => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
     dispatch(
       addContact({
         id: nanoid(),
@@ -26,6 +26,14 @@ const ContactForm = ({ newContact }) => {
         number: userData.number,
       })
     );
+    e.preventDefault();
+    // dispatch(
+    //   addContact({
+    //     id: nanoid(),
+    //     name: userData.name,
+    //     number: userData.number,
+    //   })
+    // );
 
     setuserData({
       name: '',

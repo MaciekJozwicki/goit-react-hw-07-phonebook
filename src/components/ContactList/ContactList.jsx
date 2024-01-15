@@ -1,12 +1,27 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { contacts, filter } from '../../redux/selectors';
 import { removeFromArray } from '../../redux/contactsSlice';
+import { fetchContacts } from '../../redux/operations';
+import { useEffect } from 'react';
 
 const ContactList = () => {
   const dispatch = useDispatch();
 
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+  const contactsResult = useSelector(contacts);
+  const filterResult = useSelector(filter);
+
+  console.log(contactsResult);
+
+  // refetchowanie po dodaniu
+  // sprawdzić czy post tez powinien byc w extrareducers
+  // dwa razy requesty sie wysylaja to tez trzeba sprawdzic
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const filteredContacts = contactsResult.filter(contact =>
+    contact.name.toLowerCase().includes(filterResult.toLowerCase())
   );
 
   return (
