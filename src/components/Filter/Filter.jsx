@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setFilter } from '../../redux/contactsSlice';
+
 import { filterContact } from '../../redux/filtersSlice';
 
 const Filter = () => {
@@ -8,9 +8,14 @@ const Filter = () => {
   const handleChange = e => dispatch(filterContact(e.target.value));
 
   return (
-    <label>
+    <label className="text-item">
       Find contacts by name
-      <input type="text" name="filter" onChange={handleChange} />
+      <input
+        type="text"
+        name="filter"
+        className="text-item"
+        onChange={handleChange}
+      />
     </label>
   );
 };

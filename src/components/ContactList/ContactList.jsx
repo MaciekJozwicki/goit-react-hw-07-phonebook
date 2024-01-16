@@ -10,8 +10,10 @@ const ContactList = () => {
     <ul>
       {contacts
         ? contacts.map(contact => (
-            <li key={contact.id}>
-              Name: {contact.name} Number: {contact.number}
+            <li key={contact.id} className="text-item">
+              Name: {contact.name} <br />
+              Number: {contact.phone}
+              <br />
               <button onClick={() => dispatch(removeContact(contact.id))}>
                 Delete
               </button>

@@ -16,3 +16,10 @@ code {
 App {
   background-color: aqua;
 }
+.text-item {
+  font-size: 26px;
+}
+.input-item {
+  height: 30px;
+  width: 250px;
+}

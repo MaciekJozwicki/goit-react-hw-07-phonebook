@@ -36,29 +36,29 @@ const ContactForm = ({ newContact }) => {
   return (
     <>
       <form onSubmit={handleSubmit} className="formEl__form">
-        <label className="formEl__label">Name</label>
+        <label className="text-item">Name</label>
         <input
           onChange={handleInput}
           value={userData.name}
-          className="formEl__input"
+          className="input-item"
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <label className="formEl__label">Number</label>
+        <label className="text-item">Number</label>
         <input
           onChange={handleInput}
           value={userData.number}
-          className="formEl__input"
+          className="input-item"
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-        <button className="formEl__button">Add contact</button>
+        <button className="text-item">Add contact</button>
       </form>
     </>
   );
