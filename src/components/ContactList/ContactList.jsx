@@ -5,7 +5,7 @@ import { selectVisibleContacts } from '../../redux/selectors';
 const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectVisibleContacts);
-
+  console.log(contacts);
   return (
     <ul>
       {contacts
