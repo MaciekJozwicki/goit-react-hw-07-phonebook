@@ -22,7 +22,7 @@ const ContactForm = ({ newContact }) => {
       addContact({
         id: nanoid(),
         name: userData.name,
-        phone: userData.phone,
+        phone: userData.number,
       })
     );
     e.preventDefault();
